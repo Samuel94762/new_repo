@@ -1,0 +1,2 @@
+D:\Desarrollo_de_Sistemas_2\ReporteRangoFechas\Domain\obj\Debug\Domain.csproj.AssemblyReference.cache
+D:\Desarrollo_de_Sistemas_2\ReporteRangoFechas\Domain\obj\Debug\Domain.csproj.CoreCompileInputs.cache

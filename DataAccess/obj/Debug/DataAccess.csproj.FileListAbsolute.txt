@@ -1,0 +1,6 @@
+D:\Desarrollo_de_Sistemas_2\ReporteRangoFechas\DataAccess\bin\Debug\DataAccess.dll
+D:\Desarrollo_de_Sistemas_2\ReporteRangoFechas\DataAccess\bin\Debug\DataAccess.pdb
+D:\Desarrollo_de_Sistemas_2\ReporteRangoFechas\DataAccess\obj\Debug\DataAccess.csproj.AssemblyReference.cache
+D:\Desarrollo_de_Sistemas_2\ReporteRangoFechas\DataAccess\obj\Debug\DataAccess.csproj.CoreCompileInputs.cache
+D:\Desarrollo_de_Sistemas_2\ReporteRangoFechas\DataAccess\obj\Debug\DataAccess.dll
+D:\Desarrollo_de_Sistemas_2\ReporteRangoFechas\DataAccess\obj\Debug\DataAccess.pdb
