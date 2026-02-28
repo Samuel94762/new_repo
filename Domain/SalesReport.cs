@@ -53,9 +53,63 @@ namespace Domain
             }
             //Crear ventas netas por periodo
             //Crear lista temporal de ventas netas por fecha
+            var listSalesByDate = (from sales in salesListing
+                                   group sales by sales.orderDate
+                                   into listSales
+                                   select new
+                                   {
+                                       date = listSales.Key, 
+                                       amount = listSales.Sum(item => item.totalAmount)
+                                   }).AsEnumerable();
 
+            ////Obtener numero de dias
+            int totalDays = Convert.ToInt32((toDate - fromDate).Days);
+            ////Agrupar periodo por dias 
+            if (totalDays <= 7)
+            {
+                netSalesByPeriod = (from sales in listSalesByDate
+                                    group sales by sales.date.ToString("dd-MMM-yyyy") into listSales
+                                    select new NetSalesByPeriod
+                                    {
+                                        period = listSales.Key,
+                                        netSales = listSales.Sum(item => item.amount)
+                                    }).ToList();
+            }
+            ////Agrupar periodo por semanas
+            else if (totalDays <= 30)
+            {
+                netSalesByPeriod = (from sales in listSalesByDate
+                                    group sales by System.Globalization.CultureInfo.CurrentCulture.Calendar.GetWeekOfYear(
+                                        sales.date, System.Globalization.CalendarWeekRule.FirstDay, DayOfWeek.Monday) 
+                                    into listSales
+                                    select new NetSalesByPeriod
+                                    {
+                                        period = "Week "+ listSales.Key.ToString(),
+                                        netSales = listSales.Sum(item => item.amount)
+                                    }).ToList();
+            }
+            ////Agrupar periodo por meses
+            else if (totalDays <= 365)
+            {
+                netSalesByPeriod = (from sales in listSalesByDate
+                                    group sales by sales.date.ToString ("MMM-yyyy") into listSales 
+                                    select new NetSalesByPeriod
+                                    {
+                                        period = listSales.Key,
+                                        netSales = listSales.Sum(item => item.amount)
+                                    }).ToList();
+            }
+            ////Agrupar periodo por años
+            else
+            {
+                netSalesByPeriod = (from sales in listSalesByDate
+                                    group sales by sales.date.ToString("yyyy") into listSales
+                                    select new NetSalesByPeriod
+                                    {
+                                        period = listSales.Key,
+                                        netSales = listSales.Sum(item => item.amount)
+                                    }).ToList();
+            }
         } 
-
-
     }
 }

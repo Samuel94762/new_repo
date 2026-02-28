@@ -1,2 +1,9 @@
 D:\Desarrollo_de_Sistemas_2\ReporteRangoFechas\Domain\obj\Debug\Domain.csproj.AssemblyReference.cache
 D:\Desarrollo_de_Sistemas_2\ReporteRangoFechas\Domain\obj\Debug\Domain.csproj.CoreCompileInputs.cache
+D:\Desarrollo_de_Sistemas_2\ReporteRangoFechas\Domain\bin\Debug\Domain.dll
+D:\Desarrollo_de_Sistemas_2\ReporteRangoFechas\Domain\bin\Debug\Domain.pdb
+D:\Desarrollo_de_Sistemas_2\ReporteRangoFechas\Domain\bin\Debug\DataAccess.dll
+D:\Desarrollo_de_Sistemas_2\ReporteRangoFechas\Domain\bin\Debug\DataAccess.pdb
+D:\Desarrollo_de_Sistemas_2\ReporteRangoFechas\Domain\obj\Debug\Domain.csproj.Up2Date
+D:\Desarrollo_de_Sistemas_2\ReporteRangoFechas\Domain\obj\Debug\Domain.dll
+D:\Desarrollo_de_Sistemas_2\ReporteRangoFechas\Domain\obj\Debug\Domain.pdb

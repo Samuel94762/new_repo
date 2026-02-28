@@ -11,7 +11,7 @@ namespace DataAccess
     {
         protected SqlConnection getConnection()
         {
-            return new SqlConnection("Server=(local); DataBase=Bike_Store; integrated security=true");
+            return new SqlConnection("Server=(local); DataBase=BikeStore_Samuel; integrated security=true");
         }
     }
 }
