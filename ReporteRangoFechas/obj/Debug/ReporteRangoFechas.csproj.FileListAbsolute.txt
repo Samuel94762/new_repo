@@ -62,3 +62,4 @@ D:\Desarrollo_de_Sistemas_2\ReporteRangoFechas\ReporteRangoFechas\obj\Debug\Repo
 D:\Desarrollo_de_Sistemas_2\ReporteRangoFechas\ReporteRangoFechas\obj\Debug\ReporteRangoFechas.exe
 D:\Desarrollo_de_Sistemas_2\ReporteRangoFechas\ReporteRangoFechas\obj\Debug\ReporteRangoFechas.pdb
 D:\Desarrollo_de_Sistemas_2\ReporteRangoFechas\ReporteRangoFechas\obj\Debug\ReporteRangoFechas.Reportes.FrmReporteRangoFechas.resources
+D:\Desarrollo_de_Sistemas_2\ReporteRangoFechas\ReporteRangoFechas\obj\Debug\ReporteRangoFechas.FrmProducts.resources
