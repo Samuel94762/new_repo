@@ -9,9 +9,18 @@ namespace DataAccess
 {
     public abstract class ConnectionSql
     {
+        public static string cn = "Server=(local); DataBase=BikeStore_Samuel; integrated security=true";
+        private readonly string _connectionString ;
+
+        public ConnectionSql()
+        {
+            _connectionString = cn;
+        }
+
+
         protected SqlConnection getConnection()
         {
-            return new SqlConnection("Server=(local); DataBase=BikeStore_Samuel; integrated security=true");
+            return new SqlConnection(_connectionString);
         }
     }
 }

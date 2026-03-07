@@ -83,7 +83,7 @@ namespace DataAccess
                         command.Parameters.Add(ParImagen);
 
                         //Ejecutamos el comando
-                        rpta = command.EndExecuteNonQuery() == 1 ? "OK" : "NO SE GUARDÓ EL REGISTRO";
+                        rpta = command.ExecuteNonQuery() == 1 ? "OK" : "NO SE GUARDÓ EL REGISTRO";
 
                     }
                     catch (Exception ex)
@@ -143,7 +143,7 @@ namespace DataAccess
                         command.Parameters.Add(ParImagen);
 
                         //Ejecutamos el comando
-                        rpta = command.EndExecuteNonQuery() == 1 ? "OK" : "NO SE ACTUALIZÓ EL REGISTRO";
+                        rpta = command.ExecuteNonQuery() == 1 ? "OK" : "NO SE ACTUALIZÓ EL REGISTRO";
 
                     }
                     catch (Exception ex)
@@ -176,7 +176,7 @@ namespace DataAccess
                         Parproduct_id.Value = Products.Product_id;
                         command.Parameters.Add(Parproduct_id);
                         //Ejecutamos el comando
-                        rpta = command.EndExecuteNonQuery() == 1 ? "OK" : "NO SE ELIMINÓ EL REGISTRO";
+                        rpta = command.ExecuteNonQuery() == 1 ? "OK" : "NO SE ELIMINÓ EL REGISTRO";
 
                     }
                     catch (Exception ex)

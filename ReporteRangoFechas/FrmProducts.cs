@@ -102,12 +102,43 @@ namespace ReporteRangoFechas
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
+            try
+            {
+                DialogResult opcion;
+                opcion = MessageBox.Show("Esta seguro de eliminar los registros", "Bike Store",
+                    MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                if (opcion == DialogResult.OK)
+                {
+                    int id = 0;
+                    string rpta = string.Empty;
+                    foreach (DataGridViewRow row in dataListado.Rows)
+                    {
+                        if (Convert.ToBoolean(row.Cells[0].Value))
+                        {
+                            id = Convert.ToInt32(row.Cells[1].Value);
+                            rpta = Nproducts.Eliminar(id);
+                            if (rpta.Equals("Ok"))
+                            {
+                                MensajeOK("Registro seleccionado eliminado");
+                            }
+                            else { MensajeError(rpta); }
+                        }
 
+                    }
+                    Mostrar();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + ex.StackTrace);
+            }
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-
+            if (chkEliminar.Checked)
+            { dataListado.Columns[0].Visible = true; }
+            else { dataListado.Columns[0].Visible = false; }
         }
 
         private void lblTotal_Click(object sender, EventArgs e)
@@ -181,14 +212,91 @@ namespace ReporteRangoFechas
                     errorIcono.SetError(txtPrecio, "Ingrese el precio del producto");
 
                 }
-                else { }
+                else
+                {
+                    System.IO.MemoryStream ms = new System.IO.MemoryStream();
+                    pxImagen.Image.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
+                    byte[] imagen = ms.GetBuffer();
+                    if (esNuevo)
+                    {
+                        rpta = Nproducts.Insertar(txtNombre.Text.Trim().ToUpper(),
+                            Convert.ToInt32(txtModeloAño.Text.Trim()),
+                            Convert.ToDecimal(txtPrecio.Text.Trim()),
+                            imagen);
+                    }
+                    else
+                    {
+                        rpta = Nproducts.Editar(Convert.ToInt32(txtIdProducto.Text),
+                            txtNombre.Text.Trim().ToUpper(),
+                            Convert.ToInt32(txtModeloAño.Text.Trim()),
+                            Convert.ToDecimal(txtPrecio.Text.Trim()),
+                            imagen);
+                    }
+                    if (rpta.Equals("Ok"))
+                    {
+                        if (esNuevo) { MensajeOK("Inserción satisfactoria del registro"); }
+                        else { MensajeOK("Actualización satisfactoria del registro"); }
+
+                    }
+                    else { MensajeError(rpta); }
+                    esNuevo = false;
+                    esEditar = false;
+                    Botones();
+                    Limpiar();
+                    Mostrar();
+                }
 
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                MessageBox.Show(ex.Message + ex.StackTrace);
             }
         }
+        private void dataListado_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == dataListado.Columns["Eliminar"].Index)
+            {
+                DataGridViewCheckBoxCell chkEliminar = (DataGridViewCheckBoxCell)dataListado.Rows[e.RowIndex].Cells["Eliminar"];
+                chkEliminar.Value = !Convert.ToBoolean(chkEliminar.Value);
+            }
+        }
+
+
+
+        private void btnEditar_Click(object sender, EventArgs e)
+        {
+            if (!txtIdProducto.Text.Equals(""))
+            {
+                esEditar = true;
+                Botones();
+                Habilitar(true);
+            }
+            else { MensajeError("Debe selelccionar con doble click de la lista el registro "); }
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            esNuevo = false;
+            esEditar = false;
+            Botones();
+            Limpiar();
+            Mostrar();
+            Habilitar(false);
+        }
+
+        private void dataListado_DoubleClick(object sender, EventArgs e)
+        {
+            txtIdProducto.Text = Convert.ToString(dataListado.CurrentRow.Cells["product_id"].Value);
+            txtNombre.Text = Convert.ToString(dataListado.CurrentRow.Cells["product_name"].Value);
+            txtModeloAño.Text = Convert.ToString(dataListado.CurrentRow.Cells["model_year"].Value);
+            txtPrecio.Text = Convert.ToString(dataListado.CurrentRow.Cells["price"].Value);
+            byte[] imagenBuffer = (byte[])dataListado.CurrentRow.Cells["imagen"].Value;
+            System.IO.MemoryStream ms = new System.IO.MemoryStream(imagenBuffer);
+            pxImagen.Image = Image.FromStream(ms);
+            pxImagen.SizeMode = PictureBoxSizeMode.StretchImage;
+
+            tabControl1.SelectedIndex = 1;
+        }
+
     }
 }

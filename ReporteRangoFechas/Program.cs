@@ -16,7 +16,7 @@ namespace ReporteRangoFechas
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Reportes.FrmReporteRangoFechas());
+            Application.Run(new FrmProducts());
         }
     }
 }

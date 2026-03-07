@@ -42,6 +42,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConnectionSql.cs" />
+    <Compile Include="DAorders.cs" />
+    <Compile Include="DAorder_items.cs" />
     <Compile Include="DAproducts.cs" />
     <Compile Include="OrderDao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
